@@ -1,4 +1,4 @@
-pony_gtksharp
+Pony.GtkSharp
 =============
 
 GTK# frontend for Pony framework
