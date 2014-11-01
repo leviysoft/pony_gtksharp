@@ -5,8 +5,8 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="../bin/Debug/Pony.GtkSharp.Demo.exe" internal="true" />
     <widget-library name="../../Pony.GtkSharp/bin/Debug/Pony.GtkSharp.dll" />
+    <widget-library name="../bin/Debug/Pony.GtkSharp.Demo.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
     <property name="MemberName" />
@@ -38,7 +38,6 @@
     <property name="MemberName" />
     <property name="Title" translatable="yes">ItemEditor</property>
     <property name="WindowPosition">CenterOnParent</property>
-    <signal name="DestroyEvent" handler="OnDestroyEvent" />
     <child>
       <widget class="Gtk.Fixed" id="fixed1">
         <property name="MemberName" />
@@ -80,6 +79,14 @@
           </packing>
         </child>
       </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="Pony.GtkSharp.Demo.ItemEditor" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">ItemEditor</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
     </child>
   </widget>
 </stetic-interface>

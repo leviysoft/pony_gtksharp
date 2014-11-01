@@ -19,18 +19,13 @@ namespace Pony.GtkSharp
 		{
 			_result = ViewResult.OK;
 			_ponyApplication = ponyApplication;
+			DeleteEvent += (o, args) => {if (Model == null) Model = new T(); };
 		}
 
 		public void SetModel(T model)
 		{
 			Model = model;
 			if (ModelChanged != null) ModelChanged();
-		}
-
-		public ViewResult ShowDialog()
-		{
-			Show ();
-			return _result;
 		}
 	}
 }

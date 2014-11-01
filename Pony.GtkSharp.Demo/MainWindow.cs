@@ -3,6 +3,7 @@ using Gtk;
 using Pony;
 using Pony.Views;
 using Pony.GtkSharp.Demo.Domain;
+using Pony.GtkSharp.Demo;
 
 public partial class MainWindow: Gtk.Window, IView
 {
@@ -11,7 +12,6 @@ public partial class MainWindow: Gtk.Window, IView
 	public MainWindow (IPonyApplication pony) : base (Gtk.WindowType.Toplevel)
 	{
 		_application = pony;
-		Build ();
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -39,7 +39,7 @@ public partial class MainWindow: Gtk.Window, IView
 		
 	public ViewResult ShowDialog ()
 	{
-		Show ();
+		Build ();
 		return ViewResult.OK;
 	}
 }
