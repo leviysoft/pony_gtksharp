@@ -48,6 +48,18 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <Reference Include="Pony">
+      <HintPath>..\packages\Pony.1.0.9\lib\net45\Pony.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.3.0.5.130\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\packages\structuremap.3.0.5.130\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="Pony.StructureMap">
+      <HintPath>..\packages\Pony.StructureMap.1.0.9\lib\net45\Pony.StructureMap.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -60,6 +72,21 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ItemEditor.cs" />
+    <Compile Include="gtk-gui\Pony.GtkSharp.Demo.ItemEditor.cs" />
+    <Compile Include="Domain\Item.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Domain\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pony.GtkSharp\Pony.GtkSharp.csproj">
+      <Project>{58030E14-74DA-49C5-87EA-E954D7D024D7}</Project>
+      <Name>Pony.GtkSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
