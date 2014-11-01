@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Pony.GtkSharp.Demo
+namespace Pony.GtkSharp.Demo.Domain
 {
 	public class Item
 	{

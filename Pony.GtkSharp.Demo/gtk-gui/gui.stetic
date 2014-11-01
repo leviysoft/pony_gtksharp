@@ -38,6 +38,7 @@
     <property name="MemberName" />
     <property name="Title" translatable="yes">ItemEditor</property>
     <property name="WindowPosition">CenterOnParent</property>
+    <signal name="DestroyEvent" handler="OnDestroyEvent" />
     <child>
       <widget class="Gtk.Fixed" id="fixed1">
         <property name="MemberName" />

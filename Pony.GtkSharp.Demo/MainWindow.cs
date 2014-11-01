@@ -2,11 +2,15 @@
 using Gtk;
 using Pony;
 using Pony.Views;
+using Pony.GtkSharp.Demo.Domain;
 
 public partial class MainWindow: Gtk.Window, IView
 {
-	public MainWindow () : base (Gtk.WindowType.Toplevel)
+	private readonly IPonyApplication _application;
+
+	public MainWindow (IPonyApplication pony) : base (Gtk.WindowType.Toplevel)
 	{
+		_application = pony;
 		Build ();
 	}
 
@@ -18,7 +22,19 @@ public partial class MainWindow: Gtk.Window, IView
 
 	protected void CreateBtnClick(object sender, EventArgs e)
 	{
-		throw new NotImplementedException();
+		string message;
+		var result = _application.Create<Pony.GtkSharp.Demo.Domain.Item> ();
+		if (result.Status == OperationStatus.Completed)
+		{
+			message = string.Format ("{0} {1} {2}", result.Result.Name, result.Result.Amount, result.Result.Comment);
+		} 
+		else 
+		{
+			message = "Fault";
+		}
+		var md = new MessageDialog (null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, message);
+		md.Run ();
+		md.Destroy ();
 	}
 		
 	public ViewResult ShowDialog ()

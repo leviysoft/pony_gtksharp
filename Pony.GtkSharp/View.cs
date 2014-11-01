@@ -5,7 +5,7 @@ namespace Pony.GtkSharp
 {
 	public class View<T> : Gtk.Window where T : class, new()
 	{
-		protected ViewResult Result;
+		protected ViewResult _result;
 
 		private readonly IPonyApplication _ponyApplication;
 
@@ -17,7 +17,8 @@ namespace Pony.GtkSharp
 
 		protected View (IPonyApplication ponyApplication) : base(Gtk.WindowType.Toplevel)
 		{
-			Result = ViewResult.OK;
+			_result = ViewResult.OK;
+			_ponyApplication = ponyApplication;
 		}
 
 		public void SetModel(T model)
@@ -29,7 +30,7 @@ namespace Pony.GtkSharp
 		public ViewResult ShowDialog()
 		{
 			Show ();
-			return Result;
+			return _result;
 		}
 	}
 }

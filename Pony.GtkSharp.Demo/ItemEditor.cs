@@ -1,5 +1,6 @@
 ﻿using System;
 using Pony.Views;
+using Pony.GtkSharp.Demo.Domain;
 
 namespace Pony.GtkSharp.Demo
 {
