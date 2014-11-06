@@ -1,9 +1,8 @@
 ﻿using System;
-using Pony;
 
 namespace Pony.GtkSharp
 {
-	public class View<T> : Gtk.Window where T : class, new()
+	public class ViewDialog<T> : Gtk.Dialog where T : class, new()
 	{
 		protected ViewResult _result;
 
@@ -15,7 +14,7 @@ namespace Pony.GtkSharp
 
 		protected event BindingEvent ModelChanged;
 
-		protected View (IPonyApplication ponyApplication) : base(Gtk.WindowType.Toplevel)
+		public ViewDialog (IPonyApplication ponyApplication)
 		{
 			_result = ViewResult.None;
 			_ponyApplication = ponyApplication;

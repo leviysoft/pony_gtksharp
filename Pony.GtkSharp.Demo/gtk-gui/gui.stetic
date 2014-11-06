@@ -39,46 +39,7 @@
     <property name="Title" translatable="yes">ItemEditor</property>
     <property name="WindowPosition">CenterOnParent</property>
     <child>
-      <widget class="Gtk.Fixed" id="fixed1">
-        <property name="MemberName" />
-        <property name="HasWindow">False</property>
-        <child>
-          <widget class="Gtk.Entry" id="entry1">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">●</property>
-          </widget>
-          <packing>
-            <property name="X">4</property>
-            <property name="Y">3</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Entry" id="entry2">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">●</property>
-          </widget>
-          <packing>
-            <property name="X">4</property>
-            <property name="Y">36</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Entry" id="entry3">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">●</property>
-          </widget>
-          <packing>
-            <property name="X">4</property>
-            <property name="Y">69</property>
-          </packing>
-        </child>
-      </widget>
+      <placeholder />
     </child>
   </widget>
   <widget class="Gtk.Window" id="Pony.GtkSharp.Demo.ItemEditor" design-size="400 300">
