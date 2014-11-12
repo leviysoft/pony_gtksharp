@@ -13,9 +13,9 @@ namespace Pony.GtkSharp.Demo
 		public ViewResult ShowDialog()
 		{
 			this.Build ();
-			this.Run ();
+            var result = (Gtk.ResponseType)this.Run ();
 			this.Destroy ();
-			return _result;
+            return result.ToViewResult();
 		}
 	}
 }
