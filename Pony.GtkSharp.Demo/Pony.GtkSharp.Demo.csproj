@@ -76,10 +76,12 @@
     <Compile Include="ItemController.cs" />
     <Compile Include="ItemEd.cs" />
     <Compile Include="gtk-gui\Pony.GtkSharp.Demo.ItemEd.cs" />
+    <Compile Include="Convertors\IntSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Domain\" />
+    <Folder Include="Convertors\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

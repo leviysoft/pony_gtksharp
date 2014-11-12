@@ -8,9 +8,9 @@ namespace Pony.GtkSharp.Demo
 		
 		private global::Gtk.Entry NameEditor;
 		
-		private global::Gtk.Entry entry2;
+		private global::Gtk.Entry AmountEditor;
 		
-		private global::Gtk.Entry entry3;
+		private global::Gtk.Entry CommentEditor;
 		
 		private global::Gtk.Button OkBtn;
 		
@@ -41,23 +41,23 @@ namespace Pony.GtkSharp.Demo
 			w2.X = 2;
 			w2.Y = 5;
 			// Container child fixed1.Gtk.Fixed+FixedChild
-			this.entry2 = new global::Gtk.Entry ();
-			this.entry2.CanFocus = true;
-			this.entry2.Name = "entry2";
-			this.entry2.IsEditable = true;
-			this.entry2.InvisibleChar = '●';
-			this.fixed1.Add (this.entry2);
-			global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.entry2]));
+			this.AmountEditor = new global::Gtk.Entry ();
+			this.AmountEditor.CanFocus = true;
+			this.AmountEditor.Name = "AmountEditor";
+			this.AmountEditor.IsEditable = true;
+			this.AmountEditor.InvisibleChar = '●';
+			this.fixed1.Add (this.AmountEditor);
+			global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.AmountEditor]));
 			w3.X = 2;
 			w3.Y = 35;
 			// Container child fixed1.Gtk.Fixed+FixedChild
-			this.entry3 = new global::Gtk.Entry ();
-			this.entry3.CanFocus = true;
-			this.entry3.Name = "entry3";
-			this.entry3.IsEditable = true;
-			this.entry3.InvisibleChar = '●';
-			this.fixed1.Add (this.entry3);
-			global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.entry3]));
+			this.CommentEditor = new global::Gtk.Entry ();
+			this.CommentEditor.CanFocus = true;
+			this.CommentEditor.Name = "CommentEditor";
+			this.CommentEditor.IsEditable = true;
+			this.CommentEditor.InvisibleChar = '●';
+			this.fixed1.Add (this.CommentEditor);
+			global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.CommentEditor]));
 			w4.X = 2;
 			w4.Y = 65;
 			w1.Add (this.fixed1);

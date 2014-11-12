@@ -60,7 +60,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="entry2">
+              <widget class="Gtk.Entry" id="AmountEditor">
                 <property name="MemberName">AmountEditor</property>
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
@@ -72,7 +72,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="entry3">
+              <widget class="Gtk.Entry" id="CommentEditor">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>

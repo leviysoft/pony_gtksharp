@@ -8,6 +8,9 @@ namespace Pony.GtkSharp.Demo
 	{
 		public ItemEd (IPonyApplication application): base(application)
 		{
+            Bind(m => m.Name, (ItemEd f) => f.NameEditor);
+            Bind(m => m.Amount, (ItemEd f) => f.AmountEditor);
+            Bind(m => m.Comment, (ItemEd f) => f.CommentEditor);
 		}
 
 		public ViewResult ShowDialog()

@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Linq.Expressions;
+using Gtk;
+using System.Reflection;
+using Pony.Validation;
 
 namespace Pony.GtkSharp
 {
@@ -33,6 +37,33 @@ namespace Pony.GtkSharp
 		{
             //This is required for instantiation of ViewDialog without showing it.
 		}
+
+        protected void Bind<TBind, TControl, TView>(
+            Expression<Func<T, TBind>> modelPropertyExpr,
+            Expression<Func<TView, TControl>> formPropertyExpr)
+            where TView : ViewDialog<T>
+            where TControl : Entry
+        {
+            var modelMember = (MemberExpression)modelPropertyExpr.Body;
+            var modelProperty = (PropertyInfo)modelMember.Member;
+
+            var formMember = (MemberExpression)formPropertyExpr.Body;
+            var formProperty = (FieldInfo)formMember.Member;
+            var control = (Entry)formProperty.GetValue(this);
+
+            //var propertyValidationAttributes =
+                //modelProperty.GetCustomAttributes<PropertyValidationAttribute>(true).ToList();
+
+            ModelChanged += () => control.Text = _ponyApplication.GetSerializer<TBind>().Serialize((TBind)modelProperty.GetValue(Model));
+
+            Response += (o, args) =>
+            {
+                if (args.ResponseId == ResponseType.Ok || args.ResponseId == ResponseType.Accept)
+                {
+                    modelProperty.SetValue(Model, _ponyApplication.GetSerializer<TBind>().Deserialize(control.Text));
+                }
+            };
+        }
 	}
 }
 
