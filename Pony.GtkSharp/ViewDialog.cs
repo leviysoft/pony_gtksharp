@@ -31,6 +31,7 @@ namespace Pony.GtkSharp
 
 		public new void Show()
 		{
+            //This is required for instantiation of ViewDialog without showing it.
 		}
 	}
 }
