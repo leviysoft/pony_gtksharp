@@ -18,7 +18,9 @@ namespace Pony.GtkSharp
 		{
 			_result = ViewResult.None;
 			_ponyApplication = ponyApplication;
-			DeleteEvent += (o, args) => { if (Model == null) Model = new T (); };
+            DeleteEvent += (o, args) => { if (Model == null) Model = new T (); };
+            DestroyEvent += (o, args) => { if (Model == null) Model = new T (); };
+            Response += (o, args) => { if (Model == null) Model = new T (); };
 		}
 
 		public void SetModel(T model)
