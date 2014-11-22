@@ -5,12 +5,17 @@ using Pony.Views;
 
 namespace Pony.GtkSharp.Demo
 {
-	public class ItemController : ICanCreate<Item>, IHandlesErrors<Item>
+    public class ItemController : ICanCreate<Item>, ICanEdit<Item>, IHandlesErrors<Item>
 	{
 		public OperationResult<Item> Create (IView<Item> view)
 		{
 			return OperationResult.Produce(OperationStatus.Completed, view.Model);
 		}
+            
+        public OperationResult<Item> Edit(IView<Item> view)
+        {
+            return OperationResult.Produce(OperationStatus.Completed, view.Model);
+        }
 			
 		public OperationResult<Item> OnError (IView<Item> view)
 		{

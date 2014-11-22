@@ -27,8 +27,22 @@
             <signal name="Clicked" handler="CreateBtnClick" />
           </widget>
           <packing>
-            <property name="X">13</property>
-            <property name="Y">106</property>
+            <property name="X">12</property>
+            <property name="Y">12</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="EditButton">
+            <property name="MemberName">EditButton</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">GtkButton</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="EditClick" />
+          </widget>
+          <packing>
+            <property name="X">52</property>
+            <property name="Y">53</property>
           </packing>
         </child>
       </widget>

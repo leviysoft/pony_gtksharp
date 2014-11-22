@@ -42,4 +42,22 @@ public partial class MainWindow: Gtk.Window, IView
 		Build ();
 		return ViewResult.OK;
 	}
+
+    protected void EditClick(object sender, EventArgs e)
+    {
+        string message;
+        var item = new Pony.GtkSharp.Demo.Domain.Item { Name = "Name", Comment = "Comment", Amount = 42 };
+        var result = _application.Edit<Pony.GtkSharp.Demo.Domain.Item> (item);
+        if (result.Status == OperationStatus.Completed)
+        {
+            message = string.Format ("{0} {1} {2}", result.Result.Name, result.Result.Amount, result.Result.Comment);
+        } 
+        else 
+        {
+            message = "Fault";
+        }
+        var md = new MessageDialog (null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, message);
+        md.Run ();
+        md.Destroy ();
+    }
 }

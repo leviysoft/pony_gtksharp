@@ -6,6 +6,8 @@ public partial class MainWindow
 	private global::Gtk.Fixed fixed1;
 	
 	private global::Gtk.Button CreateBtn;
+	
+	private global::Gtk.Button EditButton;
 
 	protected virtual void Build ()
 	{
@@ -26,8 +28,18 @@ public partial class MainWindow
 		this.CreateBtn.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
 		this.fixed1.Add (this.CreateBtn);
 		global::Gtk.Fixed.FixedChild w1 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.CreateBtn]));
-		w1.X = 13;
-		w1.Y = 106;
+		w1.X = 12;
+		w1.Y = 12;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.EditButton = new global::Gtk.Button ();
+		this.EditButton.CanFocus = true;
+		this.EditButton.Name = "EditButton";
+		this.EditButton.UseUnderline = true;
+		this.EditButton.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+		this.fixed1.Add (this.EditButton);
+		global::Gtk.Fixed.FixedChild w2 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.EditButton]));
+		w2.X = 52;
+		w2.Y = 53;
 		this.Add (this.fixed1);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
@@ -37,5 +49,6 @@ public partial class MainWindow
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this.CreateBtn.Clicked += new global::System.EventHandler (this.CreateBtnClick);
+		this.EditButton.Clicked += new global::System.EventHandler (this.EditClick);
 	}
 }
