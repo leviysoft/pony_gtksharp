@@ -64,6 +64,30 @@ namespace Pony.GtkSharp
                 }
             };
         }
+
+        protected void Bind<TControl, TView>(
+            Expression<Func<T, bool>> modelPropertyExpr,
+            Expression<Func<TView, TControl>> formPropertyExpr)
+            where TView : ViewDialog<T>
+            where TControl : CheckButton
+        {
+            var modelMember = (MemberExpression)modelPropertyExpr.Body;
+            var modelProperty = (PropertyInfo)modelMember.Member;
+
+            var formMember = (MemberExpression)formPropertyExpr.Body;
+            var formProperty = (FieldInfo)formMember.Member;
+            var control = (CheckButton)formProperty.GetValue(this);
+
+            ModelChanged += () => control.Active = (bool)modelProperty.GetValue(Model);
+
+            Response += (o, args) =>
+            {
+                if (args.ResponseId == ResponseType.Ok || args.ResponseId == ResponseType.Accept)
+                {
+                        modelProperty.SetValue(Model, control.Active);
+                }
+            };
+        }
             
         public override void Dispose()
         {

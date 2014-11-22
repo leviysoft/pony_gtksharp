@@ -130,6 +130,118 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
+        <member name="M:StructureMap.IContainer.GetAllInstances``1(StructureMap.Pipeline.ExplicitArguments)">
+            <summary>
+            Gets all configured instances of type T using explicitly configured arguments from the "args"
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.GetAllInstances(System.Type,StructureMap.Pipeline.ExplicitArguments)">
+            <summary>
+            Gets the default instance of type T using the explicitly configured arguments from the "args"
+            </summary>
+            <param name="type"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.GetInstance``1(StructureMap.Pipeline.ExplicitArguments)">
+            <summary>
+            Gets the default instance of T, but built with the overridden
+            arguments from args
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.GetInstance(System.Type,StructureMap.Pipeline.ExplicitArguments)">
+            <summary>
+            Gets the default instance of the pluginType using the explicitly configured arguments from the "args"
+            </summary>
+            <param name="pluginType"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.GetInstance(System.Type,StructureMap.Pipeline.ExplicitArguments,System.String)">
+            <summary>
+            Gets the named instance of the pluginType using the explicitly configured arguments from the "args"
+            </summary>
+            <param name="pluginType"></param>
+            <param name="args"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.EjectAllInstancesOf``1">
+            <summary>
+            Removes all configured instances of type T from the Container.  Use with caution!
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StructureMap.IContainer.BuildUp(System.Object)">
+            <summary>
+            The "BuildUp" method takes in an already constructed object
+            and uses Setter Injection to push in configured dependencies
+            of that object
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:StructureMap.IContainer.ForGenericType(System.Type)">
+            <summary>
+            Convenience method to request an object using an Open Generic
+            Type and its parameter Types
+            </summary>
+            <param name="templateType"></param>
+            <returns></returns>
+            <example>
+            IFlattener flattener1 = container.ForGenericType(typeof (IFlattener&lt;&gt;))
+                .WithParameters(typeof (Address)).GetInstanceAs&lt;IFlattener&gt;();
+            </example>
+        </member>
+        <member name="M:StructureMap.IContainer.GetInstance``1(StructureMap.Pipeline.ExplicitArguments,System.String)">
+            <summary>
+            Gets the named instance of the pluginType using the explicitly configured arguments from the "args"
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="args"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.With(System.Type,System.Object)">
+            <summary>
+            Starts a request for an instance or instances with explicitly configured arguments.  Specifies that any dependency
+            of type T should be "arg"
+            </summary>
+            <param name="pluginType"></param>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.With(System.Action{StructureMap.IExplicitArgsExpression})">
+            <summary>
+            Starts a request for an instance or instances with explicitly configured
+            arguments
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.With``1(``0)">
+            <summary>
+            Starts a request for an instance or instances with explicitly configured arguments.  Specifies that any dependency
+            of type T should be "arg"
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.With(System.String)">
+            <summary>
+            Starts a request for an instance or instances with explicitly configured arguments.  Specifies that any dependency or primitive argument
+            with the designated name should be the next value.
+            </summary>
+            <param name="argName"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:StructureMap.IContainer.ForObject(System.Object)" -->
         <member name="M:StructureMap.IContainer.Configure(System.Action{StructureMap.ConfigurationExpression})">
             <summary>
             Used to add additional configuration to a Container *after* the initialization.
@@ -178,101 +290,6 @@
             instance and afterward calls any methods marked with the [ValidationMethod] attribute
             </summary>
         </member>
-        <member name="M:StructureMap.IContainer.GetAllInstances``1(StructureMap.Pipeline.ExplicitArguments)">
-            <summary>
-            Gets all configured instances of type T using explicitly configured arguments from the "args"
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="args"></param>
-            <returns></returns>
-        </member>
-        <member name="M:StructureMap.IContainer.GetAllInstances(System.Type,StructureMap.Pipeline.ExplicitArguments)">
-            <summary>
-            Gets the default instance of type T using the explicitly configured arguments from the "args"
-            </summary>
-            <param name="type"></param>
-            <param name="args"></param>
-            <returns></returns>
-        </member>
-        <member name="M:StructureMap.IContainer.GetInstance``1(StructureMap.Pipeline.ExplicitArguments)">
-            <summary>
-            Gets the default instance of T, but built with the overridden
-            arguments from args
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="args"></param>
-            <returns></returns>
-        </member>
-        <member name="M:StructureMap.IContainer.With``1(``0)">
-            <summary>
-            Starts a request for an instance or instances with explicitly configured arguments.  Specifies that any dependency
-            of type T should be "arg"
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="arg"></param>
-            <returns></returns>
-        </member>
-        <member name="M:StructureMap.IContainer.With(System.String)">
-            <summary>
-            Starts a request for an instance or instances with explicitly configured arguments.  Specifies that any dependency or primitive argument
-            with the designated name should be the next value.
-            </summary>
-            <param name="argName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:StructureMap.IContainer.GetInstance(System.Type,StructureMap.Pipeline.ExplicitArguments)">
-            <summary>
-            Gets the default instance of the pluginType using the explicitly configured arguments from the "args"
-            </summary>
-            <param name="pluginType"></param>
-            <param name="args"></param>
-            <returns></returns>
-        </member>
-        <member name="M:StructureMap.IContainer.EjectAllInstancesOf``1">
-            <summary>
-            Removes all configured instances of type T from the Container.  Use with caution!
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="M:StructureMap.IContainer.BuildUp(System.Object)">
-            <summary>
-            The "BuildUp" method takes in an already constructed object
-            and uses Setter Injection to push in configured dependencies
-            of that object
-            </summary>
-            <param name="target"></param>
-        </member>
-        <member name="M:StructureMap.IContainer.ForGenericType(System.Type)">
-            <summary>
-            Convenience method to request an object using an Open Generic
-            Type and its parameter Types
-            </summary>
-            <param name="templateType"></param>
-            <returns></returns>
-            <example>
-            IFlattener flattener1 = container.ForGenericType(typeof (IFlattener&lt;&gt;))
-                .WithParameters(typeof (Address)).GetInstanceAs&lt;IFlattener&gt;();
-            </example>
-        </member>
-        <member name="M:StructureMap.IContainer.GetInstance``1(StructureMap.Pipeline.ExplicitArguments,System.String)">
-            <summary>
-            Gets the named instance of the pluginType using the explicitly configured arguments from the "args"
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="args"></param>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:StructureMap.IContainer.With(System.Type,System.Object)">
-            <summary>
-            Starts a request for an instance or instances with explicitly configured arguments.  Specifies that any dependency
-            of type T should be "arg"
-            </summary>
-            <param name="pluginType"></param>
-            <param name="arg"></param>
-            <returns></returns>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:StructureMap.IContainer.ForObject(System.Object)" -->
         <member name="M:StructureMap.IContainer.GetNestedContainer">
             <summary>
             Starts a "Nested" Container for atomic, isolated access
@@ -286,12 +303,10 @@
             <param name="profileName"></param>
             <returns></returns>
         </member>
-        <member name="M:StructureMap.IContainer.With(System.Action{StructureMap.IExplicitArgsExpression})">
+        <member name="M:StructureMap.IContainer.CreateChildContainer">
             <summary>
-            Starts a request for an instance or instances with explicitly configured
-            arguments
+            Creates a new, anonymous child container
             </summary>
-            <param name="action"></param>
             <returns></returns>
         </member>
         <member name="P:StructureMap.IContainer.Model">
@@ -355,6 +370,7 @@
             </summary>
             <typeparam name="T"></typeparam>
             <param name="args"></param>
+            <param name="name"></param>
             <returns></returns>
         </member>
         <member name="M:StructureMap.Container.GetInstance(System.Type,StructureMap.Pipeline.ExplicitArguments)">
@@ -363,6 +379,15 @@
             </summary>
             <param name="pluginType"></param>
             <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.GetInstance(System.Type,StructureMap.Pipeline.ExplicitArguments,System.String)">
+            <summary>
+            Gets the named instance of the pluginType using the explicitly configured arguments from the "args"
+            </summary>
+            <param name="pluginType"></param>
+            <param name="args"></param>
+            <param name="name"></param>
             <returns></returns>
         </member>
         <member name="M:StructureMap.Container.GetAllInstances(System.Type,StructureMap.Pipeline.ExplicitArguments)">
@@ -377,7 +402,7 @@
             <summary>
             Gets the default instance of type T using the explicitly configured arguments from the "args"
             </summary>
-            <param name="type"></param>
+            <typeparam name="T"></typeparam>
             <param name="args"></param>
             <returns></returns>
         </member>
@@ -473,6 +498,12 @@
             Get the child container for the named profile
             </summary>
             <param name="profileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.CreateChildContainer">
+            <summary>
+            Creates a new, anonymous child container
+            </summary>
             <returns></returns>
         </member>
         <member name="M:StructureMap.Container.WhatDoIHave(System.Type,System.Reflection.Assembly,System.String,System.String)">
@@ -601,6 +632,13 @@
             <summary>
             Is this container the root, a profile or child, or a nested container?
             </summary>
+        </member>
+        <member name="M:StructureMap.AutoMocking.IAutoMocker`1.UseMockForType``1">
+            <summary>
+            Forces the auto mocking container to use a mock object
+            for type T. You may have to do this for concrete types
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="M:StructureMap.AutoMocking.IAutoMocker`1.PartialMockTheClassUnderTest">
             <summary>
@@ -744,14 +782,14 @@
             <typeparam name="T"></typeparam>
             <param name="stubs"></param>
         </member>
-        <member name="P:StructureMap.AutoMocking.AutoMocker`1.ClassUnderTest">
-            <summary>
-                Gets an instance of the ClassUnderTest with mock objects (or stubs) pushed in for all of its dependencies
-            </summary>
-        </member>
         <member name="P:StructureMap.AutoMocking.AutoMocker`1.Container">
             <summary>
                 Accesses the underlying AutoMockedContainer
+            </summary>
+        </member>
+        <member name="P:StructureMap.AutoMocking.AutoMocker`1.ClassUnderTest">
+            <summary>
+                Gets an instance of the ClassUnderTest with mock objects (or stubs) pushed in for all of its dependencies
             </summary>
         </member>
         <member name="M:StructureMap.Building.BuildPlan.#ctor(System.Type,StructureMap.Pipeline.Instance,StructureMap.Building.IDependencySource,StructureMap.Building.Interception.IInterceptionPlan)">
@@ -856,6 +894,12 @@
             <summary>
             The type of the parent object.  Useful for constructing
             contextual logging dependencies
+            </summary>
+        </member>
+        <member name="P:StructureMap.IContext.RootType">
+            <summary>
+            The type of the requested object at the very top of the 
+            object graph
             </summary>
         </member>
         <member name="M:StructureMap.CloseGenericTypeExpression.StructureMap#OpenGenericTypeSpecificationExpression#As``1">
@@ -1569,9 +1613,7 @@
         </member>
         <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.LifecycleIs(StructureMap.Pipeline.ILifecycle)">
             <summary>
-            Registers an IBuildInterceptor for this Plugin Type that executes before
-            any object of this PluginType is created.  IBuildInterceptor's can be
-            used to create a custom scope
+            Assign a lifecycle to the PluginFamily
             </summary>
             <param name="lifecycle"></param>
             <returns></returns>
@@ -1822,7 +1864,7 @@
             <summary>
             Pass in additional arguments by type
             </summary>
-            <typeparam name="T"></typeparam>
+            <param name="pluginType"></param>
             <param name="arg"></param>
             <returns></returns>
         </member>
@@ -1845,7 +1887,7 @@
             <summary>
             Pass in additional arguments by type
             </summary>
-            <typeparam name="T"></typeparam>
+            <param name="pluginType"></param>
             <param name="arg"></param>
             <returns></returns>
         </member>
@@ -1872,6 +1914,12 @@
             <returns></returns>
         </member>
         <member name="M:StructureMap.ExplicitArgsExpression.GetInstance(System.Type)">
+            <summary>
+            Gets the default instance of the pluginType using the explicitly configured arguments from the "args"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ExplicitArgsExpression.GetInstance(System.Type,System.String)">
             <summary>
             Gets the default instance of the pluginType using the explicitly configured arguments from the "args"
             </summary>
@@ -2052,13 +2100,6 @@
             before being passed to IAssemblyScanner.With(IRegistrationConvention).
             </remarks>
         </member>
-        <member name="T:StructureMap.Pipeline.ExpressedInstance`1">
-            <summary>
-                Base class for many of the Instance subclasses to support
-                method chaining in the Registry DSL for common options
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
         <member name="M:StructureMap.Pipeline.Instance.AddInterceptor(StructureMap.Building.Interception.IInterceptor)">
             <summary>
             Add an interceptor to only this Instance
@@ -2122,6 +2163,13 @@
             <summary>
             The known .Net Type built by this Instance.  May be null when indeterminate.
             </summary>
+        </member>
+        <member name="T:StructureMap.Pipeline.ExpressedInstance`1">
+            <summary>
+                Base class for many of the Instance subclasses to support
+                method chaining in the Registry DSL for common options
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="M:StructureMap.Pipeline.ExpressedInstance`1.Named(System.String)">
             <summary>
@@ -2887,6 +2935,11 @@
             </summary>
             <param name="name"></param>
             <returns></returns>
+        </member>
+        <member name="T:StructureMap.Pipeline.ObjectLifecycle">
+            <summary>
+            Used internally to mark objects that are injected directly into the container
+            </summary>
         </member>
         <member name="T:StructureMap.Pipeline.SmartInstance`2">
             <summary>

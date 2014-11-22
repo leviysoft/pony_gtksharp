@@ -12,6 +12,8 @@ namespace Pony.GtkSharp.Demo
 		
 		private global::Gtk.Entry CommentEditor;
 		
+		private global::Gtk.CheckButton IsActiveBox;
+		
 		private global::Gtk.Button OkBtn;
 		
 		private global::Gtk.Button CancelBtn;
@@ -60,15 +62,26 @@ namespace Pony.GtkSharp.Demo
 			global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.CommentEditor]));
 			w4.X = 2;
 			w4.Y = 65;
+			// Container child fixed1.Gtk.Fixed+FixedChild
+			this.IsActiveBox = new global::Gtk.CheckButton ();
+			this.IsActiveBox.CanFocus = true;
+			this.IsActiveBox.Name = "IsActiveBox";
+			this.IsActiveBox.Label = global::Mono.Unix.Catalog.GetString ("IsActive");
+			this.IsActiveBox.DrawIndicator = true;
+			this.IsActiveBox.UseUnderline = true;
+			this.fixed1.Add (this.IsActiveBox);
+			global::Gtk.Fixed.FixedChild w5 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.IsActiveBox]));
+			w5.X = 3;
+			w5.Y = 98;
 			w1.Add (this.fixed1);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(w1 [this.fixed1]));
-			w5.Position = 0;
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(w1 [this.fixed1]));
+			w6.Position = 0;
 			// Internal child Pony.GtkSharp.Demo.ItemEd.ActionArea
-			global::Gtk.HButtonBox w6 = this.ActionArea;
-			w6.Name = "dialog1_ActionArea";
-			w6.Spacing = 10;
-			w6.BorderWidth = ((uint)(5));
-			w6.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
+			global::Gtk.HButtonBox w7 = this.ActionArea;
+			w7.Name = "dialog1_ActionArea";
+			w7.Spacing = 10;
+			w7.BorderWidth = ((uint)(5));
+			w7.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.OkBtn = new global::Gtk.Button ();
 			this.OkBtn.CanFocus = true;
@@ -77,9 +90,9 @@ namespace Pony.GtkSharp.Demo
 			this.OkBtn.UseUnderline = true;
 			this.OkBtn.Label = "gtk-ok";
 			this.AddActionWidget (this.OkBtn, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w7 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w6 [this.OkBtn]));
-			w7.Expand = false;
-			w7.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w8 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w7 [this.OkBtn]));
+			w8.Expand = false;
+			w8.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.CancelBtn = new global::Gtk.Button ();
 			this.CancelBtn.CanFocus = true;
@@ -88,10 +101,10 @@ namespace Pony.GtkSharp.Demo
 			this.CancelBtn.UseUnderline = true;
 			this.CancelBtn.Label = "gtk-cancel";
 			this.AddActionWidget (this.CancelBtn, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w8 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w6 [this.CancelBtn]));
-			w8.Position = 1;
-			w8.Expand = false;
-			w8.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w9 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w7 [this.CancelBtn]));
+			w9.Position = 1;
+			w9.Expand = false;
+			w9.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}

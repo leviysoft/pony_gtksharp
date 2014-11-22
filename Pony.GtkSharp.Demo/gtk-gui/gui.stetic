@@ -97,6 +97,20 @@
                 <property name="Y">65</property>
               </packing>
             </child>
+            <child>
+              <widget class="Gtk.CheckButton" id="IsActiveBox">
+                <property name="MemberName">IsActiveBox</property>
+                <property name="CanFocus">True</property>
+                <property name="Label" translatable="yes">IsActive</property>
+                <property name="DrawIndicator">True</property>
+                <property name="HasLabel">True</property>
+                <property name="UseUnderline">True</property>
+              </widget>
+              <packing>
+                <property name="X">3</property>
+                <property name="Y">98</property>
+              </packing>
+            </child>
           </widget>
           <packing>
             <property name="Position">0</property>

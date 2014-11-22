@@ -3,7 +3,7 @@ using Pony;
 
 namespace Pony.GtkSharp
 {
-	public class View<T> : Gtk.Window where T : class, new()
+    internal class View<T> : Gtk.Window where T : class, new()
 	{
 		protected ViewResult _result;
 

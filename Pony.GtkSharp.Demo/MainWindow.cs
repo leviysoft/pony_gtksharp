@@ -26,7 +26,7 @@ public partial class MainWindow: Gtk.Window, IView
 		var result = _application.Create<Pony.GtkSharp.Demo.Domain.Item> ();
 		if (result.Status == OperationStatus.Completed)
 		{
-			message = string.Format ("{0} {1} {2}", result.Result.Name, result.Result.Amount, result.Result.Comment);
+            message = string.Format ("{0} {1} {2} {3}", result.Result.Name, result.Result.Amount, result.Result.Comment, result.Result.IsActive);
 		} 
 		else 
 		{
@@ -50,7 +50,7 @@ public partial class MainWindow: Gtk.Window, IView
         var result = _application.Edit<Pony.GtkSharp.Demo.Domain.Item> (item);
         if (result.Status == OperationStatus.Completed)
         {
-            message = string.Format ("{0} {1} {2}", result.Result.Name, result.Result.Amount, result.Result.Comment);
+            message = string.Format ("{0} {1} {2} {3}", result.Result.Name, result.Result.Amount, result.Result.Comment, result.Result.IsActive);
         } 
         else 
         {

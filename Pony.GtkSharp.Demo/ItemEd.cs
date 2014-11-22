@@ -12,6 +12,7 @@ namespace Pony.GtkSharp.Demo
             Bind(m => m.Name, (ItemEd f) => f.NameEditor);
             Bind(m => m.Amount, (ItemEd f) => f.AmountEditor);
             Bind(m => m.Comment, (ItemEd f) => f.CommentEditor);
+            Bind(m => m.IsActive, (ItemEd f) => f.IsActiveBox);
 		}
 
 		public ViewResult ShowDialog()
