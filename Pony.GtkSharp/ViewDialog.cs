@@ -64,6 +64,15 @@ namespace Pony.GtkSharp
                 }
             };
         }
+            
+        public override void Dispose()
+        {
+            if (this != null)
+            {
+                Destroy();
+                base.Dispose();
+            }
+        }
 	}
 }
 
