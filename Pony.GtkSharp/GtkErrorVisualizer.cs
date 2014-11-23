@@ -10,11 +10,13 @@ namespace Pony.GtkSharp
             Gdk.Color col = new Gdk.Color();
             Gdk.Color.Parse("pink", ref col);
             control.ModifyBase(StateType.Normal, col);
+            control.TooltipText = error;
         }
 
         public static void OnErrorRelease(Widget control)
         {
             control.ModifyBase(StateType.Normal);
+            control.TooltipText = "";
         }
     }
 }

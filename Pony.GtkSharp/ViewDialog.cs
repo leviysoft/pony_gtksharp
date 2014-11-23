@@ -65,6 +65,16 @@ namespace Pony.GtkSharp
                     _errorProvider.SetError(control, error);
             };
 
+            control.Changed += (sender, e) => {
+                var error = control.Validate(serializer, propertyValidationAttributes);
+                if (string.IsNullOrEmpty(error))
+                    _errorProvider.ReleaseError(control);
+                else
+                {
+                    _errorProvider.SetError(control, error);
+                }
+            };
+
             control.FocusOutEvent += (o, args) => {
                 var error = control.Validate(serializer, propertyValidationAttributes);
                 if (string.IsNullOrEmpty(error))
