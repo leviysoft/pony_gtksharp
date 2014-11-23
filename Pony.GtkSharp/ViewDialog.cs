@@ -74,18 +74,7 @@ namespace Pony.GtkSharp
                     _errorProvider.SetError(control, error);
                 }
             };
-
-            control.FocusOutEvent += (o, args) => {
-                var error = control.Validate(serializer, propertyValidationAttributes);
-                if (string.IsNullOrEmpty(error))
-                    _errorProvider.ReleaseError(control);
-                else
-                {
-                    _errorProvider.SetError(control, error);
-                    ShowError(modelProperty.Name, error);
-                }
-            };
-          
+                
             Response += (o, args) =>
                 {
                     if (ResponseTypeRegistry.PositiveResponseTypes.Contains(args.ResponseId))
@@ -117,14 +106,6 @@ namespace Pony.GtkSharp
                         modelProperty.SetValue(Model, control.Active);
                 }
             };
-        }
-
-        protected void ShowError(string propertyName, string error)
-        {
-            var md = new MessageDialog(this, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok, error);
-            md.Title = propertyName;
-            md.Run();
-            md.Destroy();
         }
             
         public override void Dispose()
