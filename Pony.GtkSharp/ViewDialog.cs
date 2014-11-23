@@ -3,12 +3,14 @@ using System.Linq.Expressions;
 using Gtk;
 using System.Reflection;
 using Pony.Validation;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Pony.GtkSharp
 {
 	public class ViewDialog<T> : Gtk.Dialog where T : class, new()
 	{
-		protected ViewResult _result;
+		protected ViewResult? _result;
 
 		private readonly IPonyApplication _ponyApplication;
 
@@ -20,7 +22,6 @@ namespace Pony.GtkSharp
 
 		public ViewDialog (IPonyApplication ponyApplication)
 		{
-			_result = ViewResult.None;
 			_ponyApplication = ponyApplication;
             DeleteEvent += (o, args) => { if (Model == null) Model = new T (); };
             DestroyEvent += (o, args) => { if (Model == null) Model = new T (); };
@@ -51,18 +52,35 @@ namespace Pony.GtkSharp
             var formProperty = (FieldInfo)formMember.Member;
             var control = (Entry)formProperty.GetValue(this);
 
-            //var propertyValidationAttributes =
-                //modelProperty.GetCustomAttributes<PropertyValidationAttribute>(true).ToList();
+            var propertyValidationAttributes =
+                modelProperty.GetCustomAttributes<PropertyValidationAttribute>(true).ToList();
+            var serializer = _ponyApplication.GetSerializer<TBind>();
 
             ModelChanged += () => control.Text = _ponyApplication.GetSerializer<TBind>().Serialize((TBind)modelProperty.GetValue(Model));
 
-            Response += (o, args) =>
-            {
-                if (args.ResponseId == ResponseType.Ok || args.ResponseId == ResponseType.Accept)
+            control.FocusOutEvent += (o, args) => {
+                var error = control.Validate(serializer, propertyValidationAttributes);
+                if (!string.IsNullOrEmpty(error))
                 {
-                    modelProperty.SetValue(Model, _ponyApplication.GetSerializer<TBind>().Deserialize(control.Text));
+                    ShowError(modelProperty.Name, error);
                 }
             };
+          
+            Response += (o, args) =>
+                {
+                    var error = control.Validate(serializer, propertyValidationAttributes);
+                    if (!string.IsNullOrEmpty(error))
+                    {
+                        args.RetVal = ResponseType.Cancel;
+                        ShowError(modelProperty.Name, error);
+                        return;
+                    }
+
+                    if (args.ResponseId == ResponseType.Ok || args.ResponseId == ResponseType.Accept)
+                    {
+                            modelProperty.SetValue(Model, serializer.Deserialize(control.Text));
+                    }
+                };
         }
 
         protected void Bind<TControl, TView>(
@@ -87,6 +105,14 @@ namespace Pony.GtkSharp
                         modelProperty.SetValue(Model, control.Active);
                 }
             };
+        }
+
+        protected void ShowError(string propertyName, string error)
+        {
+            var md = new MessageDialog(this, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok, error);
+            md.Title = propertyName;
+            md.Run();
+            md.Destroy();
         }
             
         public override void Dispose()

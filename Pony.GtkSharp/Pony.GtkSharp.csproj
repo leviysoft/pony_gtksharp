@@ -45,6 +45,7 @@
     <Compile Include="View.cs" />
     <Compile Include="ViewDialog.cs" />
     <Compile Include="ResponseTypeExtensions.cs" />
+    <Compile Include="EntryEx.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
