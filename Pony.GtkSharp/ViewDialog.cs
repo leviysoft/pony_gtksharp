@@ -24,8 +24,6 @@ namespace Pony.GtkSharp
 		{
 			_ponyApplication = ponyApplication;
             _errorProvider = new GtkErrorProvider(this);
-            DeleteEvent += (o, args) => { if (Model == null) Model = new T (); };
-            DestroyEvent += (o, args) => { if (Model == null) Model = new T (); };
             Response += (o, args) => { if (Model == null) Model = new T (); };
 		}
 
@@ -57,7 +55,13 @@ namespace Pony.GtkSharp
                 modelProperty.GetCustomAttributes<PropertyValidationAttribute>(true).ToList();
             var serializer = _ponyApplication.GetSerializer<TBind>();
 
-            ModelChanged += () => control.Text = _ponyApplication.GetSerializer<TBind>().Serialize((TBind)modelProperty.GetValue(Model));
+            ModelChanged += () => control.Text = serializer.Serialize((TBind)modelProperty.GetValue(Model));
+
+            Shown += (sender, e) => {
+                var error = control.Validate(serializer, propertyValidationAttributes);
+                if (!string.IsNullOrEmpty(error))
+                    _errorProvider.SetError(control, error);
+            };
 
             control.FocusOutEvent += (o, args) => {
                 var error = control.Validate(serializer, propertyValidationAttributes);
@@ -96,7 +100,7 @@ namespace Pony.GtkSharp
 
             Response += (o, args) =>
             {
-                if (args.ResponseId == ResponseType.Ok || args.ResponseId == ResponseType.Accept)
+                if (ResponseTypeRegistry.PositiveResponseTypes.Contains(args.ResponseId))
                 {
                         modelProperty.SetValue(Model, control.Active);
                 }
