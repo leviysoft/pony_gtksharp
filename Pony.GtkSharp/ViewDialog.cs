@@ -24,6 +24,8 @@ namespace Pony.GtkSharp
 		{
 			_ponyApplication = ponyApplication;
             _errorProvider = new GtkErrorProvider(this);
+            _errorProvider.ErrorSet += GtkErrorVisualizer.OnErrorSet;
+            _errorProvider.ErrorReleased += GtkErrorVisualizer.OnErrorRelease;
             Response += (o, args) => { if (Model == null) Model = new T (); };
 		}
 

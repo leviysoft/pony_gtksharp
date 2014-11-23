@@ -48,6 +48,7 @@
     <Compile Include="EntryEx.cs" />
     <Compile Include="GtkErrorProvider.cs" />
     <Compile Include="ResponseTypeRegistry.cs" />
+    <Compile Include="GtkErrorVisualizer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

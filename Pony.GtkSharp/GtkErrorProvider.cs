@@ -9,6 +9,12 @@ namespace Pony.GtkSharp
         private Gtk.Dialog Dialog;
         private Dictionary<Widget, string> Errors;
 
+        public delegate void ErrorSetHandler(Widget control, string error);
+        public event ErrorSetHandler ErrorSet;
+
+        public delegate void ErrorReleasedHandler(Widget control);
+        public event ErrorReleasedHandler ErrorReleased;
+
         public GtkErrorProvider(Gtk.Dialog dialog)
         {
             Dialog = dialog;
@@ -25,6 +31,8 @@ namespace Pony.GtkSharp
             {
                 Errors.Add(control, error);
             }
+            if (ErrorSet != null)
+                ErrorSet(control, error);
             ResponseTypeRegistry.PositiveResponseTypes.ForEach(t => Dialog.SetResponseSensitive(t, false));
         }
 
@@ -34,6 +42,9 @@ namespace Pony.GtkSharp
             {
                 Errors.Remove(control);
             }
+
+            if (ErrorReleased != null)
+                ErrorReleased(control);
 
             if (!ErrorsPresent())
             {

@@ -46,7 +46,7 @@ public partial class MainWindow: Gtk.Window, IView
     protected void EditClick(object sender, EventArgs e)
     {
         string message;
-        var item = new Pony.GtkSharp.Demo.Domain.Item { Name = "Name", Comment = "Comment", Amount = 42 };
+        var item = new Pony.GtkSharp.Demo.Domain.Item { Name = "Name", Comment = "Comment", Amount = 7 };
         var result = _application.Edit<Pony.GtkSharp.Demo.Domain.Item> (item);
         if (result.Status == OperationStatus.Completed)
         {
