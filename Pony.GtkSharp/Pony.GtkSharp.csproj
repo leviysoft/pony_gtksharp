@@ -46,6 +46,8 @@
     <Compile Include="ViewDialog.cs" />
     <Compile Include="ResponseTypeExtensions.cs" />
     <Compile Include="EntryEx.cs" />
+    <Compile Include="GtkErrorProvider.cs" />
+    <Compile Include="ResponseTypeRegistry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

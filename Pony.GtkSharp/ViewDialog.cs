@@ -10,7 +10,7 @@ namespace Pony.GtkSharp
 {
 	public class ViewDialog<T> : Gtk.Dialog where T : class, new()
 	{
-		protected ViewResult? _result;
+        protected readonly GtkErrorProvider _errorProvider;
 
 		private readonly IPonyApplication _ponyApplication;
 
@@ -23,6 +23,7 @@ namespace Pony.GtkSharp
 		public ViewDialog (IPonyApplication ponyApplication)
 		{
 			_ponyApplication = ponyApplication;
+            _errorProvider = new GtkErrorProvider(this);
             DeleteEvent += (o, args) => { if (Model == null) Model = new T (); };
             DestroyEvent += (o, args) => { if (Model == null) Model = new T (); };
             Response += (o, args) => { if (Model == null) Model = new T (); };
@@ -60,25 +61,20 @@ namespace Pony.GtkSharp
 
             control.FocusOutEvent += (o, args) => {
                 var error = control.Validate(serializer, propertyValidationAttributes);
-                if (!string.IsNullOrEmpty(error))
+                if (string.IsNullOrEmpty(error))
+                    _errorProvider.ReleaseError(control);
+                else
                 {
+                    _errorProvider.SetError(control, error);
                     ShowError(modelProperty.Name, error);
                 }
             };
           
             Response += (o, args) =>
                 {
-                    var error = control.Validate(serializer, propertyValidationAttributes);
-                    if (!string.IsNullOrEmpty(error))
+                    if (ResponseTypeRegistry.PositiveResponseTypes.Contains(args.ResponseId))
                     {
-                        args.RetVal = ResponseType.Cancel;
-                        ShowError(modelProperty.Name, error);
-                        return;
-                    }
-
-                    if (args.ResponseId == ResponseType.Ok || args.ResponseId == ResponseType.Accept)
-                    {
-                            modelProperty.SetValue(Model, serializer.Deserialize(control.Text));
+                        modelProperty.SetValue(Model, serializer.Deserialize(control.Text));
                     }
                 };
         }
