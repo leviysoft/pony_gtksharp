@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/leviysoft/pony_gtksharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Demo test</releaseNotes>
+    <releaseNotes>Initial release</releaseNotes>
     <copyright>danslapman, 2014</copyright>
     <tags>winforms mvc gtksharp</tags>
   </metadata>
