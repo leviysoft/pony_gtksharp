@@ -4,13 +4,15 @@ using Pony;
 using Pony.Views;
 using Pony.GtkSharp.Demo.Domain;
 using Pony.GtkSharp.Demo;
+using Pony.GtkSharp;
 
-public partial class MainWindow: Gtk.Window, IView
+public partial class MainWindow: View, IView
 {
 	private readonly IPonyApplication _application;
 
 	public MainWindow (IPonyApplication pony) : base (Gtk.WindowType.Toplevel)
 	{
+		Build ();
 		_application = pony;
 	}
 
@@ -39,7 +41,7 @@ public partial class MainWindow: Gtk.Window, IView
 		
 	public ViewResult ShowDialog ()
 	{
-		Build ();
+		base.ShowAll();
 		return ViewResult.OK;
 	}
 

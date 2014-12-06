@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/leviysoft/pony_gtksharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Added base class for untyped Views</releaseNotes>
     <copyright>danslapman, 2014</copyright>
     <tags>winforms mvc gtksharp</tags>
   </metadata>
