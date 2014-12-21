@@ -5,6 +5,7 @@ using Pony.Serialization;
 using Pony.StructureMap;
 using Pony.Views;
 using StructureMap.Graph;
+using Pony.DI;
 
 namespace Pony.GtkSharp.Demo
 {
@@ -31,9 +32,11 @@ namespace Pony.GtkSharp.Demo
 						scan.AddAllTypesOf(typeof (IHandlesRetry<>));
 						scan.AddAllTypesOf(typeof (ISerializer<>));
 					});
+                    cfg.For<IPonyApplication>().Use<PonyApplication>();
+                    cfg.For<IPonyContainer>().Use<StructureMapPonyContainer>();
 			});
 
-			var demoApp = new PonyApplication(new StructureMapPonyContainer(structureMapContainer));
+            var demoApp = structureMapContainer.GetInstance<IPonyApplication>();
 			demoApp.Show<MainWindow> ();
 	
 			Gtk.Application.Run ();
