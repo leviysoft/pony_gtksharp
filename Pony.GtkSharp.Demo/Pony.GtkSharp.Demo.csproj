@@ -55,10 +55,13 @@
       <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.Net4.dll</HintPath>
     </Reference>
     <Reference Include="Pony">
-      <HintPath>..\packages\Pony.1.1.0\lib\net45\Pony.dll</HintPath>
+      <HintPath>..\packages\Pony.1.1.3\lib\net45\Pony.dll</HintPath>
     </Reference>
     <Reference Include="Pony.StructureMap">
-      <HintPath>..\packages\Pony.StructureMap.1.1.1\lib\net45\Pony.StructureMap.dll</HintPath>
+      <HintPath>..\packages\Pony.StructureMap.1.1.4\lib\net45\Pony.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="Pony.Validation">
+      <HintPath>..\packages\Pony.Validation.1.1.3\lib\net45\Pony.Validation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

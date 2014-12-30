@@ -2,9 +2,9 @@
 using System.Linq.Expressions;
 using Gtk;
 using System.Reflection;
-using Pony.Validation;
 using System.Linq;
 using System.Collections.Generic;
+using Pony.Validation;
 
 namespace Pony.GtkSharp
 {
